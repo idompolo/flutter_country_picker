@@ -15,6 +15,7 @@ void showCountryListBottomSheet({
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
   bool showWorldWide = false,
+  TextStyle? inputTextStyle,
 }) {
   showModalBottomSheet(
     context: context,
@@ -30,6 +31,7 @@ void showCountryListBottomSheet({
       countryListTheme,
       searchAutofocus,
       showWorldWide,
+      inputTextStyle,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -46,14 +48,15 @@ Widget _builder(
   CountryListThemeData? countryListTheme,
   bool searchAutofocus,
   bool showWorldWide,
+  TextStyle? inputTextStyle,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = countryListTheme?.bottomSheetHeight ??
-      device - (statusBarHeight + (kToolbarHeight / 1.5));
+  final height =
+      countryListTheme?.bottomSheetHeight ?? device - (statusBarHeight + (kToolbarHeight / 1.5));
 
-  Color? _backgroundColor = countryListTheme?.backgroundColor ??
-      Theme.of(context).bottomSheetTheme.backgroundColor;
+  Color? _backgroundColor =
+      countryListTheme?.backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor;
   if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {
       _backgroundColor = Colors.white;
@@ -83,6 +86,7 @@ Widget _builder(
       countryListTheme: countryListTheme,
       searchAutofocus: searchAutofocus,
       showWorldWide: showWorldWide,
+      inputTextStyle: inputTextStyle,
     ),
   );
 }
