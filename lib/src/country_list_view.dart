@@ -121,6 +121,7 @@ class _CountryListViewState extends State<CountryListView> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           child: TextField(
+            style: widget.countryListTheme?.textStyle,
             autofocus: _searchAutofocus,
             controller: _searchController,
             decoration: widget.countryListTheme?.inputDecoration ??
